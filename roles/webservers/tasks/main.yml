@@ -1,0 +1,17 @@
+- name: Stop Apache
+  service:
+    name: httpd
+    state: stopped
+  become: yes
+  become_method: "sudo"
+
+- name: FOR PRESENTATION PURPOSES Sleeping to give time to illustrate HA
+  wait_for: timeout=10
+  delegate_to: localhost 
+
+- name: Start Apache
+  service:
+    name: httpd
+    state: started
+  become: yes
+  become_method: "sudo"
